@@ -1,7 +1,0 @@
-development:
-  password: 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
-  theme_id: "121182290107"
-  store: test-ag-miguel.myshopify.com
-  directory: src/theme
-  ignore_files:
-  - config/settings_data.json
