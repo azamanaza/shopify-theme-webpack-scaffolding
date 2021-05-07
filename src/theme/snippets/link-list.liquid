@@ -1,0 +1,40 @@
+{% comment %}
+Name: Nav Item
+Desc: Renders link lists into a tags wrapped in ul > li tags. Used recursively for nested link lists. 
+Links matching the current url will receive the activeClass, defaulting to 'active'.
+Variables:
+- @links link_list
+- @ulClass string
+- @liClass string
+- @aClass string
+- @activeClass string
+{% endcomment %}
+
+<ul class="{{ ulClass }}">
+  {% for link in links %}
+    {% assign active = '' %}
+    {% assign url = link.url %}
+    {% if link.active %}
+      {% assign active = 'active' %}
+      {% assign url = '#' %}
+    {% endif %}
+    <li class="{{ liClass }} {{ active }}">
+      {% assign child_list_handle = link.title | handleize %}
+      {% if linklists[child_list_handle].links != blank %}
+        <a class="{{ aClass }} dropdown-toggle" href="#">
+          <span class="link-label">
+            {{ link.title }}
+          </span>
+        </a>
+        {% render 'link-list', links: linklists[child_list_handle].links, ulClass: ulClass, liClass: liClass, aClass: aClass %}
+      {% else %}
+        <a class="{{ aClass }}" href="{{ url }}">
+          <span class="link-label">
+            {{ link.title }}
+          </span>
+        </a>
+      {% endif %}
+    </li>
+  
+  {% endfor %}
+</ul>

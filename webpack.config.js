@@ -10,7 +10,6 @@ module.exports = {
   },
   mode: 'development',
   devtool: 'inline-source-map',
-  watch: true,
   module: {
     rules: [
       {
@@ -40,7 +39,6 @@ module.exports = {
   },
   output: {
     filename: '[name].min.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true
+    path: path.resolve(__dirname, 'src/theme/assets'),
   },
 };

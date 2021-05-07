@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <ul class="navbar-nav navbar-user flex-row">
+    <li class="nav-item mr-2">
+      <a class="nav-link d-inline-block d-md-block search-drawer-trigger"
+        data-toggle="drawer" data-target="#search-drawer"
+        data-cy="search-drawer-toggle"
+        href="#">
+        {% render 'icon', name: 'search' %}
+      </a>
+    </li>
+    <li class="nav-item mr-2">
+      <a class="nav-link" href="/cart">{% render 'icon', name: 'cart' %}</a>
+    </li>
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="/account">
+            {% render 'icon', name: 'login' %}
+          </a>
+        </li>
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="/account/logout" id="customer_logout_link">Account</a>
+        </li>
+      {% else %}
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="/account/login" id="customer_login_link">
+            {% render 'icon', name: 'login' %}
+          </a>
+        </li>
+      {% endif %}
+    {% endif %}
+
+    <li class="nav-item">
+      <a class="nav-link d-md-none"
+        href="#"
+        data-toggle="collapse" data-target="#nav-bar-supported-content"
+        aria-controls="nav-bar-supported-content" aria-expanded="false" aria-label="Toggle navigation">
+        {% render 'icon', name: 'hamburger' %}
+      </a>
+    </li>
+  </ul>
+</nav>

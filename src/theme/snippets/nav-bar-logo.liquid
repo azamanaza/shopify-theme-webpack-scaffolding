@@ -1,0 +1,28 @@
+{% comment %}
+Name: LogoSnippet
+Desc: Used to render shop's logo. Accepts both image and shop name.
+Variables:
+- @alt string
+- @image image
+{% endcomment %}
+{% assign currentUrl = page.url %}
+{% assign url = '/' %}
+{% if currentUrl == '' %}
+{% assign url = '#' %}
+{% endif %}
+
+{% if alt %}
+{% assign text = alt %}
+{% else %}
+{% assign text = shop.name %}
+{% endif %}
+{% assign maxWidth = maxWidth | plus: 0 | append: 'px' %}
+<div class="d-inline-block" data-cy="logo">
+  <a href="{{url}}">
+    {% if image %}
+    <img src="{{image}}" alt="{{text}}" style="max-width: {{maxWidth}}"/>
+    {% else %}
+    <h1>{{text}}</h1>
+    {% endif %}
+  </a>
+</div>

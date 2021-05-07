@@ -3,15 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run webpack:dev\" \"npm run theme:dev\"",
+    "webpack:dev": "npx webpack --watch --progress",
+    "theme:dev": "theme watch --allow-live --env=development",
+    "deploy:dev": "theme deploy --env=development"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "shopify",
+    "theme",
+    "scaffolding",
+    "webpack",
+    "typescript",
+    "scss"
+  ],
+  "author": "Miguel Felipe Calo<miguelc0611@yahoo.com>",
   "license": "ISC",
-  "description": "",
+  "description": "A shopify theme building scaffolding draft/poc",
   "devDependencies": {
     "@types/lodash-es": "^4.17.4",
+    "concurrently": "^6.0.2",
     "css-loader": "^5.2.4",
+    "cypress": "^7.2.0",
     "mini-css-extract-plugin": "^1.6.0",
     "sass": "^1.32.12",
     "sass-loader": "^11.0.1",
