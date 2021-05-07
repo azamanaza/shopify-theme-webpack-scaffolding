@@ -1,0 +1,44 @@
+<style>
+  ul { padding-left: 15px; }
+</style>
+{% section 'announcement' %}
+
+{% assign test = "hello world" %}
+<h1>{{ test }}</h1>
+
+{% assign var = 5 | plus: 5 %}
+<h1> {{ var }} </h1>
+
+{% assign str = "Bob,Denise,Clinton,Michael" %}
+{% assign arr = str | split: "," %}
+<ul>
+  {% for x in arr %}
+    <li>{{ x }} </li>
+  {% endfor %}
+</ul>
+
+<h1>Collectionssss</h1>
+<ul>
+  {% for x in collections %}
+    <li>{{ x.title }} </li>
+  	<li>
+      <h2> Products </h2>
+      <ul>
+        {% for p in x.products %}
+          <li>{{ p.title }} - {{ p.price | money }} - {{ p.available }}
+            <div>
+            </div>
+            <h3>Variants</h3>
+            <ul>
+              {% for variant in p.variants %}
+                <li>
+                  {{ variant.title }}  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+  	</li>
+  {% endfor %}
+</ul>

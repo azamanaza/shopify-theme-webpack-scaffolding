@@ -1,0 +1,51 @@
+{% if section.blocks %}
+<div class="announcement--wrapper">
+    <h2 class="announcement--title">Empty</h2>
+</div>
+{% endif %}
+
+{% for block in section.blocks %}
+<div class="announcement--wrapper">
+    <h2 class="announcement--title">{{ block.title }}</h2>
+    <p class="announcement--content">
+        {{ block.content }}
+    </p>
+</div>
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Announcement",
+    "class": "ag-announcement",
+    "settings": [
+      {
+        "id": "backgroudColor",
+        "type": "color",
+        "label": "Background Colour",
+        "default": "#fff"
+      },
+      {
+        "id": "textColor",
+        "type": "color",
+        "label": "Text Colour",
+        "default": "#000"
+      }
+    ],
+    "blocks": [{
+        "name" : "Announcement",
+        "type": "Hero",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content"
+            }
+        ]       
+    }]
+  }
+{% endschema %}
