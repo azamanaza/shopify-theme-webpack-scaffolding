@@ -22,7 +22,3 @@ Run `npm run dev`
 This command will build your typescript, scss, transpile and bundle them for you. Bundles are added to `./src/theme/assets`.
 Lastly, a watch is performed on both your script and theme files and will automatically update live changes.
 
-# Build
-```
-npx webpack
-```
